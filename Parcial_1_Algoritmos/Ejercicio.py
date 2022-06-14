@@ -180,3 +180,19 @@ mostrar_cola(cola_1)
 print()
 print('herbivoros(descartando los que tienen niveles(low y medium):')
 mostrar_cola(cola_2)
+
+
+'''
+atiendan las alertas en la cola de carnívoros y muestren
+en la pantalla (para que se publiquen en el canal de alerta de banda segura) la información pero
+descarten las provenientes de la zona EPC944, ya se encuentra una unidad de respaldo ahí. [actividad
+para resolver]
+'''
+def mostrar_cola_con_excepcion_de_x_zonas(cola, zonas_excepciones):
+    for i in range(0,cola.tamanio()):
+        dato = cola.mover_al_final()
+        if not dato.zone_code in zonas_excepciones:
+            print(dato)
+print()
+print('Mostrar cola de carnivoros con excepcion de la zona EPC944')
+mostrar_cola_con_excepcion_de_x_zonas(cola_1,('EPC944'))
