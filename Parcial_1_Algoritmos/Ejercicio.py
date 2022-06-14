@@ -137,7 +137,6 @@ def lista_de_x_dinosuarios_con_x_niveles(lista, names_dinosaurios, alerts_level)
     alert = lista.obtener_elemento(pos_alert)
     nueva_lista_alerts_por_fecha = Lista()
     while(alert is not None):
-        alert = lista.obtener_elemento(pos_alert)
         if (alert.dino_name in names_dinosaurios) and (alert.alert_level in alerts_level):
             nueva_lista_alerts_por_fecha.insertar(alert, campo='time')
         pos_alert += 1
@@ -162,7 +161,6 @@ def cola_de_x_tipo(lista_alerts, lista_dinosaurios,types_dinosaurios, alerts_lev
     alert = lista_alerts.obtener_elemento(pos_alert)
     nueva_cola = Cola()
     while(alert is not None):
-        alert = lista_alerts.obtener_elemento(pos_alert)
         dinosaurio = lista_dinosaurios.busqueda(alert.dino_name, 'name')
         if (dinosaurio.info.type in types_dinosaurios) and not (alert.alert_level in alerts_level_a_descartar):
             nueva_cola.arribo(alert)
@@ -196,3 +194,40 @@ def mostrar_cola_con_excepcion_de_x_zonas(cola, zonas_excepciones):
 print()
 print('Mostrar cola de carnivoros con excepcion de la zona EPC944')
 mostrar_cola_con_excepcion_de_x_zonas(cola_1,('EPC944'))
+
+
+'''
+un listado de toda la información que tienen procesada del archivo, pero
+solo de los dinosaurios Raptors y Carnotaurus; y los códigos de las zonas donde puedo encontrar
+dinosaurios Compsognathus. Que sea lo antes posible hoy es un día muy agitado. [actividad para
+'''
+def lista_de_x_dinosuarios_con_x_niveles(lista, names_dinosaurios):
+    pos_alert = 0
+    alert = lista.obtener_elemento(pos_alert)
+    nueva_lista_alerts_por_fecha = Lista()
+    while(alert is not None):
+        if (alert.dino_name in names_dinosaurios):
+            nueva_lista_alerts_por_fecha.insertar(alert, campo='time')
+        pos_alert += 1
+        alert = lista.obtener_elemento(pos_alert)
+    return nueva_lista_alerts_por_fecha
+lista_alert_con_x_dinosaurios = lista_de_x_dinosuarios_con_x_niveles(lista_alerts_por_fecha,('Raptors (Dromaeosauridae)','Carnotaurus'))
+print()
+print('Un listado de toda la información que tienen procesada del archivo, pero solo de los dinosaurios Raptors y Carnotaurus;')
+lista_alert_con_x_dinosaurios.barrido()
+
+print()
+'''
+y los códigos de las zonas donde puedo encontrar
+dinosaurios Compsognathus. Que sea lo antes posible hoy es un día muy agitado. [actividad para
+'''
+def codigos_de_las_zonas_de_x_dinosaurio(lista, name_dinosaurio):
+    pos_alert = 0
+    alert = lista.obtener_elemento(pos_alert)
+    print('El dinosaurio',name_dinosaurio,'se encuentra en las siguientes zona:')
+    while(alert is not None):
+        if (alert.dino_name in name_dinosaurio):
+            print(alert.zone_code)
+        pos_alert += 1
+        alert = lista.obtener_elemento(pos_alert)
+codigos_de_las_zonas_de_x_dinosaurio(lista_alerts_por_fecha,('Compsognathus'))
