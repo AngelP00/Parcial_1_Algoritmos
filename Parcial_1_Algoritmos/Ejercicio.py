@@ -39,7 +39,8 @@ for dinosaurio in dinosaurs:
 
 
 
-file = open('C:/Users/Angel/Documents/Codigos/Codigos en Python/Algoritmos y Estructuras de Datos(Segundo año)/Parcial_1_Algoritmos/alerts.txt')
+#file = open('C:/Users/Angel/Documents/Codigos/Codigos en Python/Algoritmos y Estructuras de Datos(Segundo año)/Parcial_1_Algoritmos/alerts.txt')
+file = open('alerts.txt')
 lineas = file.readlines()
 
 lista = []
